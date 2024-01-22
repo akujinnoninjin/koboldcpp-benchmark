@@ -8,6 +8,7 @@ from pathlib import Path
 
 API_URL = "http://10.10.100.55:5001/api"
 CSV_FILE = 'benchmark_results.csv'
+MODEL_GGUF = './koboldcpp/models/ColdMeds16b.gguf'
 
 # For E5-2660v1
 #THREADS = [1, 2, 4, 7, 8, 15, 16, 24, 31, 32]
@@ -80,8 +81,7 @@ def generate_numactl_command(threads, single, USEBLAS, blastokens):
     '--onready',
     'touch benchmark_temp',
     '--model',
-    './koboldcpp/models/ColdMeds16b.gguf',
-    #'./koboldcpp/models/OpenHermesSlerp.gguf',
+    str(MODEL_GGUF),
     #'--debug',
     '--quiet',
     ] 
